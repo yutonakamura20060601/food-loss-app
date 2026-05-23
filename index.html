@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食品ロス削減メモ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍱 食品ロス削減メモ</h1>
+            <p>賞味期限を記録して、食品ロスを減らそう！</p>
+        </header>
+
+        <div class="main-content">
+            <!-- 左側：食品管理セクション -->
+            <section class="left-section">
+                <h2>📝 食品を記録する</h2>
+                
+                <div class="form-group">
+                    <label for="foodName">食品名</label>
+                    <input type="text" id="foodName" placeholder="例：トマト、牛乳、パン" list="foodList">
+                    <datalist id="foodList"></datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="expiryDate">賞味期限</label>
+                    <input type="date" id="expiryDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">数量</label>
+                    <input type="text" id="quantity" placeholder="例：3個、500ml、100g">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">カテゴリ</label>
+                    <select id="category">
+                        <option value="野菜">野菜</option>
+                        <option value="果物">果物</option>
+                        <option value="肉">肉</option>
+                        <option value="魚">魚</option>
+                        <option value="乳製品">乳製品</option>
+                        <option value="穀物">穀物</option>
+                        <option value="調味料">調味料</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+
+                <button id="addBtn" class="btn-primary">➕ 食品を追加</button>
+            </section>
+
+            <!-- 右側：食品リストセクション -->
+            <section class="right-section">
+                <h2>📦 記録した食品</h2>
+                
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                    <button class="filter-btn" data-filter="野菜">野菜</button>
+                    <button class="filter-btn" data-filter="果物">果物</button>
+                    <button class="filter-btn" data-filter="肉">肉</button>
+                    <button class="filter-btn" data-filter="魚">魚</button>
+                    <button class="filter-btn" data-filter="乳製品">乳製品</button>
+                </div>
+
+                <div id="foodList" class="food-list"></div>
+                <div id="emptyMessage" class="empty-message">食品をまだ登録していません</div>
+            </section>
+        </div>
+
+        <!-- レシピ提案セクション -->
+        <section class="recipe-section">
+            <h2>🍳 レシピ提案</h2>
+            <button id="suggestRecipeBtn" class="btn-secondary">🔍 レシピを提案する</button>
+            <div id="recipeResult" class="recipe-result"></div>
+        </section>
+
+        <!-- 統計情報セクション -->
+        <section class="stats-section">
+            <h2>📊 統計情報</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">登録食品数</div>
+                    <div class="stat-value" id="totalFood">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">期限切れ間近</div>
+                    <div class="stat-value warning" id="expiringSoon">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">期限切れ</div>
+                    <div class="stat-value danger" id="expired">0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- データ管理 -->
+        <section class="data-management">
+            <h2>⚙️ データ管理</h2>
+            <button id="exportBtn" class="btn-small">💾 データをエクスポート</button>
+            <button id="importBtn" class="btn-small">📥 データをインポート</button>
+            <button id="clearBtn" class="btn-small btn-danger">🗑️ すべてをリセット</button>
+        </section>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
